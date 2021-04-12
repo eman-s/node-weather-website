@@ -1,4 +1,3 @@
-console.log('Client side JS file loaded')
 
 const weatherForm = document.querySelector('form')
 const weatherFormInput = document.querySelector('input')
@@ -8,15 +7,18 @@ const message1 = document.querySelector('#message-1')
 const getWeather = (address) => fetch(`http://localhost:3000/weather?address=${address}`).then((response) => { 
     response.json().then((data) => {
         if (data.error) {
-            console.log(data.error)
-            return message0.textContent = data.error       
-        }
-        message0.textContent = data.location  
-        message1.textContent = data.forecast
-        console.log(data.location)
-        console.log(data.forecast)
+            message0.textContent = data.error
+            message1.textContent = ''    
+        } else {
+            message0.textContent = data.location  
+            message1.textContent = data.forecast
+        } 
     })
-}).catch((err) => console.log(err)) 
+}).catch((err) => {
+    console.log(err)
+    message0.textContent = `Something went wrong: ${err}`   
+    message1.textContent = '' 
+}) 
 
 
 weatherForm.addEventListener('submit' , (e) => {
