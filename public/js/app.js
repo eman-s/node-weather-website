@@ -4,7 +4,7 @@ const weatherFormInput = document.querySelector('input')
 const message0 = document.querySelector('#message-0')
 const message1 = document.querySelector('#message-1') 
 
-const getWeather = (address) => fetch(`http://localhost:3000/weather?address=${address}`).then((response) => { 
+const getWeather = (address) => fetch(`/weather?address=${address}`).then((response) => { 
     response.json().then((data) => {
         if (data.error) {
             message0.textContent = data.error
