@@ -13,8 +13,8 @@ const forecast = (lat, long, callback) => {
         } else if (success === false) {
             callback(queryErr.info, undefined)
         } else {
-            const {weather_descriptions, temperature, feelslike} = current
-            callback(undefined, `${weather_descriptions[0]}. It is currently ${temperature} degrees out. It feels like ${feelslike} degrees out.`)
+            const {weather_descriptions, temperature, feelslike, humidity} = current
+            callback(undefined, `${weather_descriptions[0]}. It is currently ${temperature} degrees out. It feels like ${feelslike} degrees out. The humidity is at ${humidity}%.`)
         }
     })
     
